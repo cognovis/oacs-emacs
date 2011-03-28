@@ -1,0 +1,13 @@
+<locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
+
+  <uri pattern="*.adp" typeId="ADP"/>
+  <documentElement localName="master" typeId="ADP"/>
+
+  <typeId id="ADP" uri="adp.rnc"/>
+
+  <uri pattern="*.xql" typeId="XQL"/>
+  <documentElement localName="queryset" typeId="XQL"/>
+
+  <typeId id="XQL" uri="xql.rnc"/>
+
+</locatingRules>

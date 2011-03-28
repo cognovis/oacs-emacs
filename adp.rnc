@@ -1,0 +1,8 @@
+# ADP
+
+default namespace = ""
+
+include "/usr/share/emacs/site-lisp/nxml-mode/schema/xhtml.rnc"
+include "adp-master.rnc"
+include "adp-property.rnc"
+

@@ -1,0 +1,75 @@
+			Installing Emacs OACS
+
+
+1) Create a subdirectory called oacs in the emacs site-lisp
+   directory. On most systems the full path to site-lisp is:
+
+     /usr/share/emacs/site-lisp
+
+   If the site-lisp directory is in a different location on your
+   system then use your full path instead from here on in these
+   installation instructions.
+
+   If you use Bazaar NG you can follow the development of Emacs OACS by
+   creating a local copy of the development branch like so:
+
+     bzr get http://thecodemill.biz/repository/oacs
+
+   If you install from an Emacs OACS tarball copy all extracted files
+   to the oacs directory.
+
+2) Install the Emacs nXML mode or the PSGML mode. PSGML is the default
+   XML mode handler of OACS. Set the oacs-preferred-xml-mode variable
+   to nxml to use nXML mode instead. nXML mode in my opinion is
+   superior but your milage may varry.
+
+   PSGML mode is available from:
+
+     http://psgml.sourceforge.net/
+
+   Follow the included installation instructions.
+
+   Alternatively, Debian users can use:
+
+     apt-get install psgml
+
+   nXML mode is available from:
+
+     http://thaiopensource.com/nxml-mode/
+
+3) Install the Emacs MMM mode. MMM is available from:
+
+     http://mmm-mode.sourceforge.net/
+
+   Alternatively, Debian users can use:
+
+     apt-get install mmm-mode
+
+
+4) Recommended but not required. Install color-occur by copying 
+
+     http://www.emacswiki.org/elisp/color-occur.el
+
+   to the Emacs site-lisp directory.
+
+
+5) Put the following line in your .emacs file:
+
+    (add-to-list 'load-path "/usr/share/emacs/site-lisp/oacs")
+    (require 'oacs)
+
+
+6) Customize the following Emacs variables
+
+     user-full-name
+     user-mail-address
+
+   Type M-x customize-variable followed by the name of the variable to
+   change their value. Be sure to save the new value for future
+   sessions.
+
+
+7) Restart Emacs.
+
+
+8) Enjoy!

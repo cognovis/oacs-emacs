@@ -1,0 +1,19 @@
+# XQL
+
+default namespace = ""
+
+element queryset {
+    element rdbms {
+        element type {"oracle" | "postgresql" },
+        element version { text }
+    }?,
+    ( element fullquery {
+        attribute name { text },
+        element querytext { text }
+      }
+      | element partialquery {
+          attribute name { text },
+          element querytext { text }
+      }
+    )*
+}

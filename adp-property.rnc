@@ -1,0 +1,4 @@
+property = element property { property.attlist, Inline.model }
+property.attlist =
+  attribute name { Text.datatype }?
+

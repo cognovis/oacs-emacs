@@ -1,0 +1,9 @@
+start |= master
+master = element master { 
+    master.attlist, 
+    master.content
+}
+master.attlist = attribute src { 
+    Text.datatype 
+}?
+master.content = property*, Block.model
