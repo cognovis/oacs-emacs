@@ -38,7 +38,7 @@
   :type 'boolean
   :group 'oacs)
 
-(defcustom oacs-base-dir "/var/lib/aolserver/"
+(defcustom oacs-base-dir "/var/lib/aolserver"
   "Base directory of a OpenACS installation."
   :type 'string
   :group 'oacs)

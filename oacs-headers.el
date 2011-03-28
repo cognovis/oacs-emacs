@@ -1,8 +1,10 @@
 ;;; oacs-headers.el --- OACS auto insert headers extension
 
 ;; Copyright (C) 2004  the Code Mill
+;; Copyright (C) 2011  cognovís GmbH
 
 ;; Author: Bart Teeuwisse <bart.teeuwisse@thecodemill.biz>
+;; Author: Malte Sussdorff <malte.sussdorff@cognovis.de>
 ;; Keywords: convenience, extensions, tools
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -72,7 +74,23 @@ base dir."
 (define-skeleton oacs-tcl-template
   "Declare the Tcl part of OpenACS web page."
   "Brief documentation: "
-  "# " (oacs-file-name) \n \n
+  "# " (oacs-file-name) \n
+"#
+# Copyright (c) 2011, cognovís GmbH, Hamburg, Germany
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see
+# <http://www.gnu.org/licenses/>.
+#\n \n" 
+          
   "ad_page_contract {" \n \n
   > str | _ \n \n
   > '(oacs-author) ?\n
@@ -94,6 +112,21 @@ base dir."
   "Declare an OpenACS Tcl library."
   nil
   "# " (oacs-file-name) \n \n
+  "#"
+"# Copyright (c) 2011, cognovís GmbH, Hamburg, Germany
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see
+# <http://www.gnu.org/licenses/>.
+# \n"  ?\n          
   "ad_library {" \n \n
   > _ \n \n
   > '(oacs-author) ?\n
@@ -109,6 +142,20 @@ base dir."
   "Brief documentation: "
   "# " (oacs-file-name) ?\n
   "#" ?\n
+"# Copyright (c) 2011, cognovís GmbH, Hamburg, Germany
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see
+# <http://www.gnu.org/licenses/>.
+#"          
   "# " str | _ ?\n
   "#" ?\n
   "# " '(oacs-author) ?\n >
@@ -143,6 +190,20 @@ base dir."
   "Brief documentation: "
   "# " (oacs-file-name) ?\n
   "#" ?\n
+"# Copyright (c) 2011, cognovís GmbH, Hamburg, Germany
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see
+# <http://www.gnu.org/licenses/>.
+#"          
   "# " str | _ ?\n
   "#" ?\n
   "# " '(oacs-author) ?\n >
@@ -161,6 +222,22 @@ base dir."
   (if oacs-tdom-installed
       (concat "<!DOCTYPE queryset PUBLIC \"-//OpenACS//DTD XQL 1.0//EN\" \"http://www.thecodemill.biz/repository/xql.dtd\">")) \n
   (concat "<!-- " (oacs-file-name) " -->") \n
+  "<!-- 
+# Copyright (c) 2011, cognovís GmbH, Hamburg, Germany
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see
+# <http://www.gnu.org/licenses/>.
+#
+-->" \n
   "<!-- " '(oacs-author) " -->" \n
   "<!-- " '(oacs-creation-date) " -->" \n
   (if (not (null oacs-insert-cvs-id))
@@ -197,14 +274,28 @@ base dir."
   "Declare an OpenACS sql data model definition file."
   nil
   "-- " \n
-  "-- " (buffer-file-name) ?\n
+  "-- " (oacs-file-name) ?\n
   "-- " \n
+  "-- Copyright (c) 2011, cognovís GmbH, Hamburg, Germany
+-- This program is free software: you can redistribute it and/or modify
+-- it under the terms of the GNU General Public License as published by
+-- the Free Software Foundation, either version 3 of the License, or
+-- (at your option) any later version.
+-- This program is distributed in the hope that it will be useful,
+-- but WITHOUT ANY WARRANTY; without even the implied warranty of
+-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-- GNU General Public License for more details.
+--
+-- You should have received a copy of the GNU General Public License
+-- along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-- " \n 
   "-- " '(oacs-author) ?\n
   "-- " '(oacs-creation-date) ?\n
   (if (not (null oacs-insert-cvs-id))
       (skeleton-insert '(nil
                          "-- " '(oacs-cvs-id) ?\n)))
   "--" \n \n
+  "SELECT acs_log__debug('/" (oacs-file-name) "','');" \n \n
   _
   )
 
