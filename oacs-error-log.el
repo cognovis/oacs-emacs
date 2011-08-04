@@ -49,7 +49,7 @@ The buffer is put in Major mode NSD and Minor mode OACS."
   (interactive)
   (let* ((server (read-string
 		  "Server: " nil 'oacs-error-log-history))
-	 (error-basename (concat server "-error.log"))
+	 (error-basename (concat server "/error.log"))
 	 (error-log-dirs oacs-error-log-dirs)
 	 (error-log-dir nil)
 	 (error-log "/*"))

@@ -68,7 +68,7 @@
   :type 'vector
   :group 'oacs)
 
-(defcustom oacs-error-log-dirs (quote ("/var/log/aolserver"))
+(defcustom oacs-error-log-dirs (quote ("/var/log/aolserver4"))
   "List of directories that might contain AOLServer error logs."
   :type '(repeat string)
   :group 'oacs)
@@ -85,7 +85,7 @@ slow on large log files."
                  (const :tag "Nxml-mode" :value nxml))
   :group 'oacs)
 
-(defcustom oacs-insert-cvs-id "t"
+(defcustom oacs-insert-cvs-id "f"
   "Insert @cvsid $Id$?"
   :type 'boolean
   :group 'oacs)
